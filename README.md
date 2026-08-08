@@ -1,10 +1,10 @@
-## Hi, I'm John Paul 👋
+# Hi, I'm John Paul 👋
 
-# Administrative VA | Creative Professional | Digital Artist | Lifelong Learner
+## Administrative VA | Creative Professional | Digital Artist | Lifelong Learner
 
 I'm a detail-oriented professional with experience in administration, asset management, documentation, customer service, and creative production. I'm currently expanding my skills in remote work, digital tools, web technologies, and workflow optimization.
 
-🛠️ What I Do
+## 🛠️ What I Do
 
 📁 Administrative & document management
 
@@ -35,4 +35,5 @@ Build it. Learn it. Improve it. Repeat.
 I'm always curious, always learning, and always looking for better ways to build things—whether it's a workflow, a design, or a Gundam model.
 
 📍 Philippines
-🚀 Currently learning. Always building.
+
+### 🚀 Currently learning. Always building.

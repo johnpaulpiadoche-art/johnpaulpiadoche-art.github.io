@@ -1,4 +1,5 @@
 👋 Hi, I'm John Paul Piadoche
+
 Administrative Virtual Assistant | Creative Professional | Digital Artist
 
 Welcome to my GitHub profile!

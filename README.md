@@ -1,17 +1,25 @@
-# Hi, I'm John Paul 👋
+## Hi, I'm John Paul 👋
 
-Administrative VA | Creative Professional | Digital Artist | Lifelong Learner
+# Administrative VA | Creative Professional | Digital Artist | Lifelong Learner
 
 I'm a detail-oriented professional with experience in administration, asset management, documentation, customer service, and creative production. I'm currently expanding my skills in remote work, digital tools, web technologies, and workflow optimization.
 
 🛠️ What I Do
+
 📁 Administrative & document management
+
 📊 Data organization and research
+
 📧 Email & calendar management
+
 📝 SOPs and workflow documentation
+
 🎨 Graphic design & digital art
+
 💻 Exploring web development and automation
+
 🔧 Learning new tools and systems
+
 🎨 Creative Side
 
 I'm a digital artist, painter, costume designer, production artist, props designer, and logo designer. I enjoy combining creativity with technology to turn ideas into useful and engaging digital projects.

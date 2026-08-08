@@ -20,11 +20,11 @@ I'm a detail-oriented professional with experience in administration, asset mana
 
 🔧 Learning new tools and systems
 
-🎨 Creative Side
+## 🎨 Creative Side
 
 I'm a digital artist, painter, costume designer, production artist, props designer, and logo designer. I enjoy combining creativity with technology to turn ideas into useful and engaging digital projects.
 
-🤖 Outside the Screen
+##🤖 Outside the Screen
 
 When I'm not working, you'll probably find me building Gundam, playing badminton, gaming, creating art, listening to music, or talking about Pokémon.
 

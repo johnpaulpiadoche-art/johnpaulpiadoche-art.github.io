@@ -1,319 +1,68 @@
+from pathlib import Path
+import zipfile, tempfile, re, shutil
 
-index_html = r'''<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="John Paul Piadoche — Administrative Virtual Assistant and Creative Professional portfolio.">
-  <title>John Paul Piadoche | Administrative VA & Creative Professional</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="site-header">
-    <nav class="nav container">
-      <a class="brand" href="#home">JP<span>.</span></a>
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#tools">Tools</a>
-        <a href="#creative">Creative</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </header>
+src_zip = Path("/mnt/data/johnpaul-portfolio-fixed.zip")
+work = Path("/mnt/data/johnpaul-black-gold")
+if work.exists():
+    shutil.rmtree(work)
+work.mkdir()
 
-  <main>
-    <section id="home" class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">ADMINISTRATIVE VA · CREATIVE PROFESSIONAL</p>
-          <h1>Organized support.<br><span>Creative thinking.</span></h1>
-          <p class="hero-copy">
-            Hi, I'm <strong>John Paul Piadoche</strong> — an adaptable professional with experience in
-            administration, asset management, documentation, customer service, sales, and creative production.
-          </p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#contact">Let's Work Together</a>
-            <a class="btn secondary" href="#services">Explore My Skills</a>
-          </div>
-          <div class="quick-facts">
-            <span>📁 Administrative Support</span>
-            <span>🎨 Creative Production</span>
-            <span>💻 Digital Tools</span>
-          </div>
-        </div>
-        <div class="hero-card">
-          <div class="avatar">JP</div>
-          <p class="card-label">CURRENT FOCUS</p>
-          <h2>Administrative<br>Virtual Assistance</h2>
-          <p>Helping clients stay organized, informed, and on track.</p>
-          <div class="status"><span></span> Available for opportunities</div>
-        </div>
-      </div>
-    </section>
+with zipfile.ZipFile(src_zip, "r") as z:
+    z.extractall(work)
 
-    <section id="about" class="section">
-      <div class="container two-col">
-        <div>
-          <p class="eyebrow">ABOUT ME</p>
-          <h2>Reliable behind the scenes, creative when it matters.</h2>
-        </div>
-        <div class="section-copy">
-          <p>
-            My professional experience has taught me how to organize information, manage records,
-            coordinate with people, handle documentation, and work with tasks that require accuracy
-            and confidentiality.
-          </p>
-          <p>
-            I'm building my career in remote administrative support, with a focus on document management,
-            research, coordination, data organization, and digital workflows. I learn new platforms quickly
-            and enjoy finding practical ways to make work easier.
-          </p>
-          <p>
-            My creative background is an added advantage: I'm also a digital artist, painter, costume designer,
-            production artist, props designer, and logo designer. That mix gives me a detail-oriented,
-            problem-solving approach to everyday work.
-          </p>
-        </div>
-      </div>
-    </section>
+html_path = work / "index.html"
+css_path = work / "style.css"
 
-    <section id="services" class="section alt">
-      <div class="container">
-        <p class="eyebrow">WHAT I CAN HELP WITH</p>
-        <h2>Administrative support that keeps work moving.</h2>
-        <div class="cards">
-          <article class="card">
-            <div class="icon">📂</div>
-            <h3>Document Management</h3>
-            <p>Organizing files, maintaining records, formatting documents, and keeping information easy to find.</p>
-          </article>
-          <article class="card">
-            <div class="icon">🔎</div>
-            <h3>Research & Data</h3>
-            <p>Online research, information gathering, data organization, and clear summaries or reports.</p>
-          </article>
-          <article class="card">
-            <div class="icon">📅</div>
-            <h3>Scheduling & Coordination</h3>
-            <p>Calendar support, follow-ups, coordination, task tracking, and professional communication.</p>
-          </article>
-          <article class="card">
-            <div class="icon">📝</div>
-            <h3>SOP & Documentation</h3>
-            <p>Creating and organizing procedures, checklists, process notes, and workflow documentation.</p>
-          </article>
-          <article class="card">
-            <div class="icon">📊</div>
-            <h3>Data Organization</h3>
-            <p>Structured spreadsheets, lists, trackers, file cleanup, and detail-focused administrative work.</p>
-          </article>
-          <article class="card">
-            <div class="icon">🎨</div>
-            <h3>Creative Support</h3>
-            <p>Canva graphics, presentations, visual assets, simple branding, and creative production support.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+html = html_path.read_text(encoding="utf-8")
+css = css_path.read_text(encoding="utf-8")
 
-    <section id="tools" class="section">
-      <div class="container">
-        <p class="eyebrow">TOOLS & SKILLS</p>
-        <h2>A practical digital toolkit.</h2>
-        <div class="skills">
-          <span>Google Workspace</span>
-          <span>Microsoft Office</span>
-          <span>Canva</span>
-          <span>Google Docs</span>
-          <span>Google Sheets</span>
-          <span>Google Drive</span>
-          <span>GitHub</span>
-          <span>GitHub Pages</span>
-          <span>AI Tools</span>
-          <span>Document Management</span>
-          <span>Online Research</span>
-          <span>Data Entry</span>
-        </div>
-        <p class="learning-note">Currently expanding my skills in automation, web development, productivity tools, and AI-assisted workflows.</p>
-      </div>
-    </section>
+# Replace the site's accent palette with a black + gold luxury palette.
+css = css.replace(
+    '--bg:#0b0d12;--surface:#11151d;--surface2:#171c26;--text:#f4f7fb;--muted:#aab3c2;'
+    '--accent:#ff4fa3;--accent2:#8c7cff;--border:rgba(255,255,255,.10);--max:1120px;',
+    '--bg:#070707;--surface:#0f0f0f;--surface2:#17130a;--text:#f7f3e8;--muted:#b8b09f;'
+    '--accent:#d4af37;--accent2:#f4d77a;--border:rgba(212,175,55,.18);--max:1120px;'
+)
 
-    <section id="creative" class="section alt">
-      <div class="container">
-        <p class="eyebrow">CREATIVE SIDE</p>
-        <h2>Where administration meets imagination.</h2>
-        <p class="intro">
-          Creativity has always been part of how I solve problems. Replace the sample cards below with
-          your actual projects and artwork as you build your portfolio.
-        </p>
-        <div class="creative-grid">
-          <div class="creative-card"><span>01</span><h3>Digital Art</h3><p>Illustration, digital compositions, and visual concepts.</p></div>
-          <div class="creative-card"><span>02</span><h3>Logo Design</h3><p>Identity concepts and custom visual branding.</p></div>
-          <div class="creative-card"><span>03</span><h3>Costume & Props</h3><p>Concept development, fabrication, and production design.</p></div>
-          <div class="creative-card"><span>04</span><h3>Production Art</h3><p>Visual assets created with practical production in mind.</p></div>
-        </div>
-      </div>
-    </section>
+# Handle any remaining pink/purple-specific declarations.
+css = css.replace('rgba(255,79,163,.15)', 'rgba(212,175,55,.12)')
+css = css.replace('rgba(140,124,255,.12)', 'rgba(212,175,55,.06)')
+css = css.replace('#180912', '#0b0a06')
+css = css.replace('rgba(255,79,163,.35)', 'rgba(212,175,55,.35)')
+css = css.replace('rgba(255,79,163,.4)', 'rgba(212,175,55,.4)')
+css = css.replace('#55d98a', '#d4af37')
+css = css.replace('#17101b,#0f1520', '#17130a,#0b0b0b')
 
-    <section class="section">
-      <div class="container experience">
-        <div>
-          <p class="eyebrow">EXPERIENCE</p>
-          <h2>Built from real-world work.</h2>
-        </div>
-        <div class="timeline">
-          <article>
-            <span>ASSET MANAGEMENT · LEGAL DOCUMENTATION</span>
-            <h3>Vallacar Transit, Inc.</h3>
-            <p>Experience supporting property and legal documentation, records, correspondence, coordination, and administrative processes.</p>
-          </article>
-          <article>
-            <span>SALES · COLLECTIONS · MANUFACTURING</span>
-            <h3>Rivson Goldplast Manufacturing Corporation</h3>
-            <p>Experience involving customer-facing work, sales support, collections, and coordination in a manufacturing environment.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="quote-section">
-      <div class="container quote">
-        <p>“Build it. Learn it. Improve it. Repeat.”</p>
-        <span>My approach to work, learning, and even building Gundam.</span>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact">
-      <div class="container contact-box">
-        <div>
-          <p class="eyebrow">LET'S CONNECT</p>
-          <h2>Have a task, project, or opportunity?</h2>
-          <p>I'd be happy to connect and learn how I can support your team.</p>
-        </div>
-        <div class="contact-links">
-          <a href="mailto:YOUR_EMAIL@example.com">📧 Email Me</a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">💼 LinkedIn</a>
-          <a href="https://github.com/johnpaulpiadoche-art" target="_blank" rel="noopener">🐙 GitHub</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <span>© <span id="year"></span> John Paul Piadoche</span>
-      <span>Administrative VA · Creative Professional</span>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+# Add subtle gold details and a luxury-style selection/focus treatment.
+css += r'''
+::selection{background:var(--accent);color:#090806}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.hero-card{box-shadow:0 25px 70px rgba(0,0,0,.45),0 0 45px rgba(212,175,55,.06)}
+.btn.primary{box-shadow:0 8px 28px rgba(212,175,55,.12)}
 '''
 
-style_css = r''':root{
-  --bg:#0b0d12;--surface:#11151d;--surface2:#171c26;--text:#f4f7fb;--muted:#aab3c2;
-  --accent:#ff4fa3;--accent2:#8c7cff;--border:rgba(255,255,255,.10);--max:1120px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
-a{color:inherit;text-decoration:none}
-.container{width:min(92%,var(--max));margin:auto}
-.site-header{position:sticky;top:0;z-index:20;background:rgba(11,13,18,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
-.brand{font:700 1.6rem "Space Grotesk";letter-spacing:-1px}.brand span{color:var(--accent)}
-.nav-links{display:flex;gap:28px;color:var(--muted);font-size:.95rem}.nav-links a:hover{color:var(--text)}
-.menu-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.5rem}
-.hero{padding:110px 0 90px;background:radial-gradient(circle at 80% 20%,rgba(255,79,163,.15),transparent 28%),radial-gradient(circle at 15% 60%,rgba(140,124,255,.12),transparent 25%)}
-.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:70px;align-items:center}
-.eyebrow{color:var(--accent);font-size:.76rem;font-weight:700;letter-spacing:2px;margin-bottom:16px}
-h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.12}
-h1{font-size:clamp(3rem,7vw,6.4rem);letter-spacing:-4px;max-width:850px}
-h1 span{color:var(--accent)}
-h2{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-1.5px}
-.hero-copy{font-size:1.15rem;color:var(--muted);max-width:700px;margin:28px 0}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{padding:13px 19px;border-radius:10px;font-weight:700;border:1px solid var(--border)}
-.btn.primary{background:var(--accent);color:#180912;border-color:var(--accent)}.btn.secondary:hover{background:var(--surface2)}
-.quick-facts{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px;color:var(--muted);font-size:.88rem}
-.hero-card{background:linear-gradient(145deg,var(--surface2),var(--surface));border:1px solid var(--border);border-radius:24px;padding:30px;box-shadow:0 25px 70px rgba(0,0,0,.25)}
-.avatar{width:86px;height:86px;border-radius:20px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));font:700 2rem "Space Grotesk";color:white;margin-bottom:55px}
-.card-label{color:var(--muted);font-size:.7rem;letter-spacing:1.8px;font-weight:700}.hero-card h2{font-size:2rem;margin:8px 0 12px}.hero-card>p:not(.card-label){color:var(--muted)}
-.status{margin-top:25px;padding-top:18px;border-top:1px solid var(--border);font-size:.83rem;color:var(--muted)}.status span{display:inline-block;width:8px;height:8px;border-radius:50%;background:#55d98a;margin-right:8px}
-.section{padding:105px 0}.alt{background:var(--surface)}
-.two-col,.experience{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px}
-.section-copy{color:var(--muted);font-size:1.04rem}.section-copy p+p{margin-top:18px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}
-.card,.creative-card{background:var(--bg);border:1px solid var(--border);border-radius:18px;padding:26px}.card:hover,.creative-card:hover{transform:translateY(-3px);border-color:rgba(255,79,163,.35);transition:.2s}
-.icon{font-size:1.6rem;margin-bottom:22px}.card h3{font-size:1.15rem;margin-bottom:9px}.card p,.creative-card p,.intro,.learning-note{color:var(--muted);font-size:.92rem}
-.skills{display:flex;flex-wrap:wrap;gap:10px;margin:34px 0 18px}.skills span{padding:9px 13px;border:1px solid var(--border);border-radius:999px;background:var(--surface);font-size:.88rem}
-.learning-note{margin-top:20px}
-.intro{max-width:720px;margin-top:15px}.creative-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:35px}.creative-card span{color:var(--accent);font-size:.75rem;font-weight:700}.creative-card h3{margin:55px 0 10px}
-.timeline{display:grid;gap:18px}.timeline article{border-left:2px solid var(--accent);padding:6px 0 6px 22px}.timeline span{color:var(--accent);font-size:.7rem;font-weight:700;letter-spacing:1px}.timeline h3{margin:5px 0 7px}.timeline p{color:var(--muted)}
-.quote-section{padding:85px 0;background:linear-gradient(135deg,#17101b,#0f1520)}.quote{text-align:center}.quote p{font:600 clamp(2rem,5vw,4rem) "Space Grotesk";letter-spacing:-2px}.quote span{display:block;color:var(--muted);margin-top:14px}
-.contact{padding-bottom:120px}.contact-box{background:linear-gradient(135deg,var(--surface2),var(--surface));border:1px solid var(--border);border-radius:24px;padding:50px;display:flex;justify-content:space-between;gap:40px;align-items:center}.contact-box p:not(.eyebrow){color:var(--muted);margin-top:12px}.contact-links{display:flex;flex-direction:column;gap:10px;min-width:220px}.contact-links a{padding:12px 15px;border:1px solid var(--border);border-radius:10px}.contact-links a:hover{background:var(--bg);border-color:rgba(255,79,163,.4)}
-footer{border-top:1px solid var(--border);padding:25px 0;color:var(--muted);font-size:.8rem}.footer-inner{display:flex;justify-content:space-between;gap:20px}
-@media(max-width:850px){
-  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:var(--bg);padding:20px 4%;flex-direction:column;gap:16px;border-bottom:1px solid var(--border)}
-  .nav-links.open{display:flex}.menu-toggle{display:block}
-  .hero-grid,.two-col,.experience{grid-template-columns:1fr;gap:40px}.hero{padding-top:75px}
-  .cards{grid-template-columns:repeat(2,1fr)}.creative-grid{grid-template-columns:repeat(2,1fr)}
-  .contact-box{flex-direction:column;align-items:flex-start}
-}
-@media(max-width:560px){
-  h1{letter-spacing:-2px}.cards,.creative-grid{grid-template-columns:1fr}.section{padding:75px 0}.hero-card{padding:24px}
-  .footer-inner{flex-direction:column}.quick-facts{flex-direction:column;gap:7px}
-}
-'''
+# Make the hero language slightly more premium.
+html = html.replace(
+    '<p class="eyebrow">ADMINISTRATIVE VA · CREATIVE PROFESSIONAL</p>',
+    '<p class="eyebrow">ADMINISTRATIVE VA · CREATIVE PROFESSIONAL</p>'
+)
+html = html.replace(
+    'Organized support.<br><span>Creative thinking.</span>',
+    'Organized support.<br><span>Elevated execution.</span>'
+)
+html = html.replace(
+    'Creative mind. Organized workflow. Reliable execution. Always learning. Always building.',
+    'Organized support. Creative thinking. Reliable execution.'
+)
 
-script_js = r'''const toggle = document.querySelector('.menu-toggle');
-const links = document.querySelector('.nav-links');
-toggle?.addEventListener('click', () => {
-  const open = links.classList.toggle('open');
-  toggle.setAttribute('aria-expanded', open);
-});
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => links.classList.remove('open'));
-});
-document.getElementById('year').textContent = new Date().getFullYear();
-'''
+html_path.write_text(html, encoding="utf-8")
+css_path.write_text(css, encoding="utf-8")
 
-readme = r'''# John Paul Piadoche — Portfolio
-
-A responsive personal portfolio for an Administrative Virtual Assistant and Creative Professional.
-
-## Files
-- `index.html` — main website
-- `style.css` — design and responsive layout
-- `script.js` — mobile navigation and footer year
-
-## GitHub Pages
-Upload these files to your GitHub Pages repository. Make sure `index.html` is in the repository root.
-
-### Before publishing
-Replace:
-- `YOUR_EMAIL@example.com` with your actual email
-- the LinkedIn placeholder URL with your LinkedIn profile
-- sample creative/project sections with your actual work
-'''
-
-for name, content in {
-    "index.html": index_html,
-    "style.css": style_css,
-    "script.js": script_js,
-    "README.md": readme
-}.items():
-    (root/name).write_text(content, encoding="utf-8")
-
-zip_path = Path("/mnt/data/johnpaul-portfolio.zip")
-with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
-    for p in root.iterdir():
+out_zip = Path("/mnt/data/johnpaul-portfolio-black-gold.zip")
+with zipfile.ZipFile(out_zip, "w", zipfile.ZIP_DEFLATED) as z:
+    for p in work.iterdir():
         z.write(p, arcname=p.name)
 
-print(f"Created: {zip_path}")
-print("Files:", [p.name for p in root.iterdir()])
+print(f"Created: {out_zip}")
+print("Theme: Black + Gold / luxury professional")
+print("Files:", [p.name for p in work.iterdir()])

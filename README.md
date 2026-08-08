@@ -1,39 +1,38 @@
-# Hi, I'm John Paul 👋
+# John Paul Piadoche — Black & Gold Portfolio
 
-## Administrative Virtual Assistant | Creative Professional | Digital Artist
+A completely self-contained portfolio website for an Administrative Virtual Assistant and Creative Professional.
 
-I'm a detail-oriented professional with experience in administration, asset management, documentation, customer service, and creative production. I'm currently expanding my skills in remote work, digital tools, web technologies, and workflow optimization.
+## Upload to GitHub Pages
 
-## 🛠️ What I Do
+Put these files directly in the root of your GitHub Pages repository:
 
-📁 Administrative & document management
+- `index.html`
+- `style.css`
+- `script.js`
 
-📊 Data organization and research
+Do not rename them.
 
-📧 Email & calendar management
+## Before publishing
 
-📝 SOPs and workflow documentation
+In `index.html`, replace:
 
-🎨 Graphic design & digital art
+- `YOUR_EMAIL@example.com` with your real email
+- `https://www.linkedin.com/` with your LinkedIn profile URL
 
-💻 Exploring web development and automation
+The profile photo area currently uses a JP placeholder. Replace the `.profile-placeholder` block with your own image later if desired.
 
-🔧 Learning new tools and systems
+## GitHub Pages
 
-## 🎨 Creative Side
+Repository:
+`johnpaulpiadoche-art.github.io`
 
-I'm a digital artist, painter, costume designer, production artist, props designer, and logo designer. I enjoy combining creativity with technology to turn ideas into useful and engaging digital projects.
+Expected site:
+`https://johnpaulpiadoche-art.github.io/`
 
-##🤖 Outside the Screen
+## Profile Photo
 
-When I'm not working, you'll probably find me building Gundam, playing badminton, gaming, creating art, listening to music, or talking about Pokémon.
+Your profile photo is already included at:
 
-I believe in one simple philosophy:
+`images/profile.jpg`
 
-Build it. Learn it. Improve it. Repeat.
-
-I'm always curious, always learning, and always looking for better ways to build things—whether it's a workflow, a design, or a Gundam model.
-
-📍 Philippines
-
-### 🚀 Currently learning. Always building.
+The website is already coded to display it. Upload the entire `images` folder along with the three website files.

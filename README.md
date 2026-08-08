@@ -1,92 +1,30 @@
-👋 Hi, I'm John Paul Piadoche
+# John Paul Piadoche — Black & Gold Portfolio
 
-Administrative Virtual Assistant | Creative Professional | Digital Artist
+A completely self-contained portfolio website for an Administrative Virtual Assistant and Creative Professional.
 
-  Welcome to my GitHub profile!
+## Upload to GitHub Pages
 
-  I'm an organized and adaptable professional with experience in administration, asset management, documentation, customer service, sales, and creative production.
+Put these files directly in the root of your GitHub Pages repository:
 
-  I'm currently building my career as an Administrative Virtual Assistant, helping businesses stay organized through reliable administrative support, documentation, research, data organization, and digital workflows.
+- `index.html`
+- `style.css`
+- `script.js`
 
-💼 What I Can Help With
+Do not rename them.
 
-📁 Administrative Support
-    Document organization, data entry, file management, and records maintenance.
+## Before publishing
 
-📧 Communication & Coordination
-    Email management, scheduling, follow-ups, and professional correspondence.
+In `index.html`, replace:
 
-🔎 Research & Data
-    Online research, information gathering, data organization, and reporting.
+- `YOUR_EMAIL@example.com` with your real email
+- `https://www.linkedin.com/` with your LinkedIn profile URL
 
-📝 Documentation & SOPs
-    Creating, organizing, and maintaining procedures and workflow documentation.
+The profile photo area currently uses a JP placeholder. Replace the `.profile-placeholder` block with your own image later if desired.
 
-🎨 Creative Support
-    Canva designs, digital artwork, presentations, logos, and visual content.
+## GitHub Pages
 
-💻 Digital Tools
-    Google Workspace • Microsoft Office • Canva • Photoshop • AI Tools (ChatGPT, Gemini)
+Repository:
+`johnpaulpiadoche-art.github.io`
 
-🎨 My Creative Side
-
-I'm also a digital artist, painter, costume designer, production artist, props designer, and logo designer.
-
-I enjoy combining creativity and technology to solve problems and turn ideas into useful digital projects.
-
-🚀 Currently Learning
-    Virtual Assistant workflows
-    Advanced Google Workspace
-    Productivity & automation tools
-    GitHub & GitHub Pages
-    AI-assisted workflows
-    Digital portfolio development
-🧩 Featured Projects
-🌐 Personal Portfolio
-
-My professional portfolio showcasing my administrative, creative, and digital skills.
-
-→ View My Portfolio
-
-🎨 Creative Projects
-
-Digital artwork, branding, logo designs, costume concepts, and other creative work.
-
-📋 Administrative Projects
-
-Sample spreadsheets, documentation, SOPs, research projects, and workflow examples.
-
-🛠️ Tools & Skills
-
-Administrative:
-    Google Workspace • Microsoft Office • Data Entry • File Management • Research • Documentation
-
-Creative:
-    Canva • Photoshop • Digital Art • Graphic Design • Logo Design
-
-🎮 Beyond Work
-
-When I'm not working, I'm probably:
-    
-  🤖 Building Gundam
-  🎨 Creating art
-  🎮 Gaming
-  ⚡ Playing badminton
-  🐱 Talking about Pokémon
-  🎵 Making music
-
-I believe in:
-
-  Build it. Learn it. Improve it. Repeat.
-
-📫 Let's Connect
-
-  💼 LinkedIn:      n/john-paul-piadoche-471442235
-
-  🌐 Portfolio:     johnpaulpiadoche-art.github.io
-
-  📧 Email:         johnpaulpiadoche3@gmail.com
-
-⭐ Thanks for visiting!
-
-Creative mind. Organized workflow. Reliable execution. Always learning. Always building.
+Expected site:
+`https://johnpaulpiadoche-art.github.io/`

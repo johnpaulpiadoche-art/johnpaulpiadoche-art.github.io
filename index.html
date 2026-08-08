@@ -1,68 +1,291 @@
-from pathlib import Path
-import zipfile, tempfile, re, shutil
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="John Paul Piadoche — Administrative Virtual Assistant and Creative Professional.">
+  <title>John Paul Piadoche | Administrative VA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
 
-src_zip = Path("/mnt/data/johnpaul-portfolio-fixed.zip")
-work = Path("/mnt/data/johnpaul-black-gold")
-if work.exists():
-    shutil.rmtree(work)
-work.mkdir()
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href="#home">JP<span>•</span></a>
 
-with zipfile.ZipFile(src_zip, "r") as z:
-    z.extractall(work)
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
 
-html_path = work / "index.html"
-css_path = work / "style.css"
+      <nav id="navMenu">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#experience">Experience</a>
+        <a href="#creative">Creative</a>
+        <a href="#contact" class="nav-cta">Let's Connect</a>
+      </nav>
+    </div>
+  </header>
 
-html = html_path.read_text(encoding="utf-8")
-css = css_path.read_text(encoding="utf-8")
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="gold-orb orb-one"></div>
+      <div class="gold-orb orb-two"></div>
 
-# Replace the site's accent palette with a black + gold luxury palette.
-css = css.replace(
-    '--bg:#0b0d12;--surface:#11151d;--surface2:#171c26;--text:#f4f7fb;--muted:#aab3c2;'
-    '--accent:#ff4fa3;--accent2:#8c7cff;--border:rgba(255,255,255,.10);--max:1120px;',
-    '--bg:#070707;--surface:#0f0f0f;--surface2:#17130a;--text:#f7f3e8;--muted:#b8b09f;'
-    '--accent:#d4af37;--accent2:#f4d77a;--border:rgba(212,175,55,.18);--max:1120px;'
-)
+      <div class="container hero-layout">
+        <div class="hero-content">
+          <div class="eyebrow"><span></span> ADMINISTRATIVE VIRTUAL ASSISTANT</div>
 
-# Handle any remaining pink/purple-specific declarations.
-css = css.replace('rgba(255,79,163,.15)', 'rgba(212,175,55,.12)')
-css = css.replace('rgba(140,124,255,.12)', 'rgba(212,175,55,.06)')
-css = css.replace('#180912', '#0b0a06')
-css = css.replace('rgba(255,79,163,.35)', 'rgba(212,175,55,.35)')
-css = css.replace('rgba(255,79,163,.4)', 'rgba(212,175,55,.4)')
-css = css.replace('#55d98a', '#d4af37')
-css = css.replace('#17101b,#0f1520', '#17130a,#0b0b0b')
+          <h1>Professional support.<br><em>Creative thinking.</em></h1>
 
-# Add subtle gold details and a luxury-style selection/focus treatment.
-css += r'''
-::selection{background:var(--accent);color:#090806}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.hero-card{box-shadow:0 25px 70px rgba(0,0,0,.45),0 0 45px rgba(212,175,55,.06)}
-.btn.primary{box-shadow:0 8px 28px rgba(212,175,55,.12)}
-'''
+          <p class="hero-text">
+            Hi, I'm <strong>John Paul Piadoche</strong> — an organized and adaptable professional
+            with experience in administration, asset management, documentation, customer service,
+            sales, and creative production.
+          </p>
 
-# Make the hero language slightly more premium.
-html = html.replace(
-    '<p class="eyebrow">ADMINISTRATIVE VA · CREATIVE PROFESSIONAL</p>',
-    '<p class="eyebrow">ADMINISTRATIVE VA · CREATIVE PROFESSIONAL</p>'
-)
-html = html.replace(
-    'Organized support.<br><span>Creative thinking.</span>',
-    'Organized support.<br><span>Elevated execution.</span>'
-)
-html = html.replace(
-    'Creative mind. Organized workflow. Reliable execution. Always learning. Always building.',
-    'Organized support. Creative thinking. Reliable execution.'
-)
+          <div class="buttons">
+            <a class="btn btn-gold" href="#contact">Work With Me <b>→</b></a>
+            <a class="btn btn-outline" href="#services">View Services</a>
+          </div>
 
-html_path.write_text(html, encoding="utf-8")
-css_path.write_text(css, encoding="utf-8")
+          <div class="mini-stats">
+            <div><strong>ADMIN</strong><span>Support & Coordination</span></div>
+            <div><strong>DOCS</strong><span>Records & Organization</span></div>
+            <div><strong>CREATE</strong><span>Design & Visual Support</span></div>
+          </div>
+        </div>
 
-out_zip = Path("/mnt/data/johnpaul-portfolio-black-gold.zip")
-with zipfile.ZipFile(out_zip, "w", zipfile.ZIP_DEFLATED) as z:
-    for p in work.iterdir():
-        z.write(p, arcname=p.name)
+        <aside class="profile-card">
+          <div class="profile-frame">
+            <div class="profile-placeholder">JP</div>
+          </div>
+          <div class="profile-info">
+            <p>JOHN PAUL PIADOCHE</p>
+            <h2>Administrative<br><span>VA</span></h2>
+            <div class="availability"><i></i> Open to opportunities</div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-print(f"Created: {out_zip}")
-print("Theme: Black + Gold / luxury professional")
-print("Files:", [p.name for p in work.iterdir()])
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container split">
+        <div class="section-heading">
+          <p class="eyebrow">01 — ABOUT</p>
+          <h2>Organized behind the scenes. <em>Creative by nature.</em></h2>
+        </div>
+
+        <div class="copy">
+          <p>
+            My professional background has given me hands-on experience with documentation,
+            records, coordination, administrative processes, customer-facing work, and
+            asset management.
+          </p>
+          <p>
+            I'm currently focused on building my career as an <strong>Administrative Virtual Assistant</strong>,
+            supporting clients with organization, research, documentation, scheduling, data,
+            and day-to-day digital workflows.
+          </p>
+          <p>
+            I also come from a creative background as a digital artist, painter, costume designer,
+            production artist, props designer, and logo designer. That creative mindset helps me
+            approach problems with attention to detail and practical solutions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section dark-panel" id="services">
+      <div class="container">
+        <div class="section-heading centered">
+          <p class="eyebrow">02 — SERVICES</p>
+          <h2>How I can <em>support your workflow.</em></h2>
+          <p>Reliable administrative assistance designed to keep tasks organized and moving.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service">
+            <span class="number">01</span>
+            <div class="service-icon">▦</div>
+            <h3>Administrative Support</h3>
+            <p>Day-to-day task support, organization, coordination, follow-ups, and general virtual assistance.</p>
+          </article>
+
+          <article class="service">
+            <span class="number">02</span>
+            <div class="service-icon">⌁</div>
+            <h3>Document Management</h3>
+            <p>File organization, document formatting, records maintenance, and information management.</p>
+          </article>
+
+          <article class="service">
+            <span class="number">03</span>
+            <div class="service-icon">⌕</div>
+            <h3>Research & Data</h3>
+            <p>Online research, information gathering, spreadsheet organization, and structured data.</p>
+          </article>
+
+          <article class="service">
+            <span class="number">04</span>
+            <div class="service-icon">◷</div>
+            <h3>Scheduling & Coordination</h3>
+            <p>Calendar assistance, meeting coordination, reminders, task tracking, and follow-ups.</p>
+          </article>
+
+          <article class="service">
+            <span class="number">05</span>
+            <div class="service-icon">≡</div>
+            <h3>SOP & Documentation</h3>
+            <p>Process notes, checklists, SOP organization, and clear workflow documentation.</p>
+          </article>
+
+          <article class="service">
+            <span class="number">06</span>
+            <div class="service-icon">✦</div>
+            <h3>Creative Support</h3>
+            <p>Canva graphics, presentations, visual assets, simple branding, and creative production.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section class="section" id="tools">
+      <div class="container tools-layout">
+        <div class="section-heading">
+          <p class="eyebrow">03 — TOOLKIT</p>
+          <h2>Digital tools for <em>modern workflows.</em></h2>
+        </div>
+
+        <div>
+          <div class="tool-list">
+            <span>Google Workspace</span>
+            <span>Google Docs</span>
+            <span>Google Sheets</span>
+            <span>Google Drive</span>
+            <span>Microsoft Office</span>
+            <span>Canva</span>
+            <span>GitHub</span>
+            <span>GitHub Pages</span>
+            <span>AI Tools</span>
+          </div>
+          <p class="learning">
+            <strong>Currently learning:</strong> automation, web development, productivity platforms,
+            and AI-assisted workflows.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section dark-panel" id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">04 — EXPERIENCE</p>
+          <h2>Experience that built my <em>attention to detail.</em></h2>
+        </div>
+
+        <div class="timeline">
+          <article>
+            <div class="date">ASSET MANAGEMENT · LEGAL DOCUMENTATION</div>
+            <div>
+              <h3>Vallacar Transit, Inc.</h3>
+              <p>
+                Experience supporting property and legal documentation, records, correspondence,
+                coordination, and administrative processes.
+              </p>
+            </div>
+          </article>
+
+          <article>
+            <div class="date">SALES · COLLECTIONS · MANUFACTURING</div>
+            <div>
+              <h3>Rivson Goldplast Manufacturing Corporation</h3>
+              <p>
+                Experience involving customer-facing work, sales support, collections,
+                and coordination in a manufacturing environment.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREATIVE -->
+    <section class="section creative" id="creative">
+      <div class="container">
+        <div class="section-heading centered">
+          <p class="eyebrow">05 — CREATIVE SIDE</p>
+          <h2>Administration meets <em>imagination.</em></h2>
+          <p>A second skill set that brings visual thinking and problem-solving to my work.</p>
+        </div>
+
+        <div class="creative-grid">
+          <div class="creative-card">
+            <span>01</span>
+            <h3>Digital Art</h3>
+            <p>Digital illustrations, visual concepts, and creative compositions.</p>
+          </div>
+          <div class="creative-card">
+            <span>02</span>
+            <h3>Logo Design</h3>
+            <p>Identity concepts, custom graphics, and visual branding.</p>
+          </div>
+          <div class="creative-card">
+            <span>03</span>
+            <h3>Costume & Props</h3>
+            <p>Concept development, fabrication, and production design.</p>
+          </div>
+          <div class="creative-card">
+            <span>04</span>
+            <h3>Production Art</h3>
+            <p>Visual assets built with practical production in mind.</p>
+          </div>
+        </div>
+
+        <div class="personality">
+          <span>OFF THE CLOCK</span>
+          <p>🎨 Art &nbsp; · &nbsp; 🤖 Gundam &nbsp; · &nbsp; 🎮 Gaming &nbsp; · &nbsp; 🐱 Pokémon &nbsp; · &nbsp; 🏸 Badminton &nbsp; · &nbsp; 🎵 Music</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="container contact-box">
+        <div>
+          <p class="eyebrow">06 — CONTACT</p>
+          <h2>Let's build a better <em>workflow.</em></h2>
+          <p class="contact-copy">
+            Have an administrative task, project, or remote opportunity?
+            I'd be happy to connect.
+          </p>
+        </div>
+
+        <div class="contact-buttons">
+          <a href="mailto:YOUR_EMAIL@example.com">Email Me <span>↗</span></a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+          <a href="https://github.com/johnpaulpiadoche-art" target="_blank" rel="noopener">GitHub <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer">
+      <strong>JP<span>•</span></strong>
+      <p>© <span id="year"></span> John Paul Piadoche. Built with purpose.</p>
+      <p>Administrative VA · Creative Professional</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

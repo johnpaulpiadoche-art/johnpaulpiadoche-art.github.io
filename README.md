@@ -81,11 +81,11 @@ I believe in:
 
 📫 Let's Connect
 
-        💼 LinkedIn:      n/john-paul-piadoche-471442235
+  💼 LinkedIn:      n/john-paul-piadoche-471442235
 
-        🌐 Portfolio:     johnpaulpiadoche-art.github.io
+  🌐 Portfolio:     johnpaulpiadoche-art.github.io
 
-        📧 Email:         johnpaulpiadoche3@gmail.com
+  📧 Email:         johnpaulpiadoche3@gmail.com
 
 ⭐ Thanks for visiting!
 

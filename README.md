@@ -1,38 +1,30 @@
-# John Paul Piadoche — Black & Gold Portfolio
+Hi, I'm John Paul 👋
 
-A completely self-contained portfolio website for an Administrative Virtual Assistant and Creative Professional.
+Administrative VA | Creative Professional | Digital Artist | Lifelong Learner
 
-## Upload to GitHub Pages
+I'm a detail-oriented professional with experience in administration, asset management, documentation, customer service, and creative production. I'm currently expanding my skills in remote work, digital tools, web technologies, and workflow optimization.
 
-Put these files directly in the root of your GitHub Pages repository:
+🛠️ What I Do
+📁 Administrative & document management
+📊 Data organization and research
+📧 Email & calendar management
+📝 SOPs and workflow documentation
+🎨 Graphic design & digital art
+💻 Exploring web development and automation
+🔧 Learning new tools and systems
+🎨 Creative Side
 
-- `index.html`
-- `style.css`
-- `script.js`
+I'm a digital artist, painter, costume designer, production artist, props designer, and logo designer. I enjoy combining creativity with technology to turn ideas into useful and engaging digital projects.
 
-Do not rename them.
+🤖 Outside the Screen
 
-## Before publishing
+When I'm not working, you'll probably find me building Gundam, playing badminton, gaming, creating art, listening to music, or talking about Pokémon.
 
-In `index.html`, replace:
+I believe in one simple philosophy:
 
-- `YOUR_EMAIL@example.com` with your real email
-- `https://www.linkedin.com/` with your LinkedIn profile URL
+Build it. Learn it. Improve it. Repeat.
 
-The profile photo area currently uses a JP placeholder. Replace the `.profile-placeholder` block with your own image later if desired.
+I'm always curious, always learning, and always looking for better ways to build things—whether it's a workflow, a design, or a Gundam model.
 
-## GitHub Pages
-
-Repository:
-`johnpaulpiadoche-art.github.io`
-
-Expected site:
-`https://johnpaulpiadoche-art.github.io/`
-
-## Profile Photo
-
-Your profile photo is already included at:
-
-`images/profile.jpg`
-
-The website is already coded to display it. Upload the entire `images` folder along with the three website files.
+📍 Philippines
+🚀 Currently learning. Always building.

@@ -375,3 +375,12 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--muted)
   .contact-box { padding: 35px 25px; }
   .footer { flex-direction: column; align-items: flex-start; }
 }
+
+.experience-summary{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-top:40px;margin-bottom:10px}
+.experience-total{border-left:2px solid var(--gold);padding-left:16px}
+.experience-total strong{display:block;font:700 3rem "Playfair Display",serif;color:var(--gold-light);line-height:1}
+.experience-total span{display:block;color:var(--muted);font-size:.78rem;margin-top:6px}
+.location-note{color:var(--muted);font-size:.82rem}
+.location-note strong{color:var(--cream)}
+.contact-location{color:var(--gold-light)!important;font-size:.82rem!important;margin-top:12px}
+@media(max-width:650px){.experience-summary{align-items:flex-start;flex-direction:column;gap:15px}}

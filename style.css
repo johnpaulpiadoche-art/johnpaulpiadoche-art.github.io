@@ -384,3 +384,41 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--muted)
 .location-note strong{color:var(--cream)}
 .contact-location{color:var(--gold-light)!important;font-size:.82rem!important;margin-top:12px}
 @media(max-width:650px){.experience-summary{align-items:flex-start;flex-direction:column;gap:15px}}
+
+/* 1930s archival / typewriter-inspired theme */
+body.vintage-site{
+  --black:#21160f;--black-2:#2a1c13;--panel:#332218;
+  --gold:#c19a58;--gold-light:#e5c98c;--gold-dark:#775a35;
+  --cream:#eadfc9;--muted:#b8a990;--line:rgba(193,154,88,.28);
+  background:#21160f url("images/vintage-background.png") center top/cover fixed no-repeat;
+  color:var(--cream);
+}
+body.vintage-site::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(rgba(25,16,10,.72),rgba(25,16,10,.84)),
+  repeating-linear-gradient(0deg,rgba(255,220,160,.025) 0 1px,transparent 1px 4px);
+}
+body.vintage-site .header{background:rgba(28,18,12,.94);border-bottom:2px solid var(--gold-dark)}
+body.vintage-site .hero{
+  background:linear-gradient(rgba(35,23,15,.64),rgba(35,23,15,.74)),
+  url("images/vintage-background.png") center/cover fixed;
+}
+body.vintage-site .profile-card,
+body.vintage-site .service,
+body.vintage-site .creative-card,
+body.vintage-site .contact-box{
+  background:rgba(38,25,17,.91);box-shadow:0 14px 35px rgba(0,0,0,.28);
+}
+body.vintage-site .profile-frame{background:#d5c09b;padding:8px;border:3px double var(--gold-dark)}
+body.vintage-site .profile-photo{filter:sepia(.18) contrast(1.04)}
+body.vintage-site .btn-gold{background:#b58b4c;border:1px solid #e0c58d}
+body.vintage-site .dark-panel{background:rgba(28,18,12,.92)}
+body.vintage-site .tool-list span{background:#291b12;border:1px solid var(--line)}
+body.vintage-site .creative-card{background:#2b1d14}
+body.vintage-site .contact{
+  background:linear-gradient(rgba(34,22,14,.78),rgba(34,22,14,.9)),
+  url("images/vintage-background.png") center/cover;
+}
+body.vintage-site footer{background:#1b120d}
+body.vintage-site h1,body.vintage-site h2,body.vintage-site h3{font-family:"Playfair Display",serif}
+body.vintage-site h1 em,body.vintage-site h2 em{color:#b86b4e}

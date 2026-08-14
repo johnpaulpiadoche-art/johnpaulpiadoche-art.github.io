@@ -1,23 +1,38 @@
-# Hi, I'm John Paul 👋
+# John Paul Piadoche — GitHub Portfolio VA Update
 
-## Administrative VA | Creative Professional | Digital Artist | Lifelong Learner
+This update adds an Administrative Virtual Assistant section while retaining the dark/black-and-gold portfolio theme.
 
-I'm a detail-oriented professional with experience in administration, asset management, documentation, customer service, and creative production. I'm currently expanding my skills in remote work, digital tools, web technologies, and workflow optimization.
+## Features
+- Administrative VA section
+- Google Workspace case study
+- 10 project cards
+- **VIEW SAMPLE** buttons
+- Image placeholders for every sample
+- Creative portfolio gallery
+- Responsive navigation
+- Experience and Skills sections
+- Contact button
 
-### My work is all about...
+## Add your images
+Replace the placeholder JPG files in `assets/images/va/` with your screenshots:
+client-database.jpg, task-dashboard.jpg, expense-tracker.jpg, drive-organization.jpg, onboarding-form.jpg, meeting-notes.jpg, sop.jpg, report.jpg, gmail.jpg, calendar.jpg
 
-📁 Administrative & document management 📊 Data organization and research 📧 Email & calendar management 📝 SOPs and workflow documentation 🎨 Graphic design & digital art 💻 Exploring web development and automation 🔧 Learning new tools and systems 🎨 Creative Side
+Replace the creative placeholders in `assets/images/creative/`:
+creative-01.jpg through creative-04.jpg
 
-I'm a digital artist, painter, costume designer, production artist, props designer, and logo designer. I enjoy combining creativity with technology to turn ideas into useful and engaging digital projects.
+Keep the filenames and the website will automatically display your images.
 
-### 🤖 Outside the Screen
+## View Sample buttons
+The buttons currently open the local files in `assets/docs/`.
+For a live Google Sheets/Docs/Drive demo:
+1. Upload the sample to Google Drive.
+2. Open with Google Sheets/Docs if appropriate.
+3. Set the sharing permission you want.
+4. Copy the share URL.
+5. Replace the corresponding `href="assets/docs/..."` in index.html with the Google URL.
 
-When I'm not working, you'll probably find me building Gundam, playing badminton, gaming, creating art, listening to music, or talking about Pokémon.
+## GitHub Pages
+Upload/replace `index.html`, `style.css`, and the `assets` folder in your GitHub Pages repository.
 
-I believe in one simple philosophy:
-
-Build it. Learn it. Improve it. Repeat.
-
-I'm always curious, always learning, and always looking for better ways to build things—whether it's a workflow, a design, or a Gundam model.
-
-# 📍 Philippines 🚀 Currently learning. Always building.
+## Important
+BrightPath Creative Studio is a simulated portfolio client. Do not present it as paid client work.

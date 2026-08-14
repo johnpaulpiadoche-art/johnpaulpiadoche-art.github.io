@@ -1,38 +1,36 @@
-# John Paul Piadoche — GitHub Portfolio VA Update
+# John Paul Piadoche — Merged Portfolio
 
-This update adds an Administrative Virtual Assistant section while retaining the dark/black-and-gold portfolio theme.
+This version is based on the previous portfolio and keeps the original introduction/about, profile-photo path, services, toolkit, career experience, creative section, contact section, and black-and-gold theme.
 
-## Features
-- Administrative VA section
-- Google Workspace case study
-- 10 project cards
-- **VIEW SAMPLE** buttons
-- Image placeholders for every sample
-- Creative portfolio gallery
-- Responsive navigation
-- Experience and Skills sections
-- Contact button
+## New features
+- Administrative VA Portfolio section
+- 10 VA project cards
+- VIEW SAMPLE buttons with image-preview modal
+- OPEN FILE buttons
+- Google Workspace workflow display
+- Dedicated VA image folder
+- Dedicated creative image folder
+- Responsive layout
 
-## Add your images
-Replace the placeholder JPG files in `assets/images/va/` with your screenshots:
-client-database.jpg, task-dashboard.jpg, expense-tracker.jpg, drive-organization.jpg, onboarding-form.jpg, meeting-notes.jpg, sop.jpg, report.jpg, gmail.jpg, calendar.jpg
+## Replace images
+VA samples:
+`assets/images/va/`
 
-Replace the creative placeholders in `assets/images/creative/`:
-creative-01.jpg through creative-04.jpg
+Creative samples:
+`assets/images/creative/`
 
-Keep the filenames and the website will automatically display your images.
+Keep the existing filenames and your images will appear automatically.
 
-## View Sample buttons
-The buttons currently open the local files in `assets/docs/`.
-For a live Google Sheets/Docs/Drive demo:
-1. Upload the sample to Google Drive.
-2. Open with Google Sheets/Docs if appropriate.
-3. Set the sharing permission you want.
-4. Copy the share URL.
-5. Replace the corresponding `href="assets/docs/..."` in index.html with the Google URL.
+## Profile picture
+The original portfolio references:
+`images/profile.jpg`
 
-## GitHub Pages
-Upload/replace `index.html`, `style.css`, and the `assets` folder in your GitHub Pages repository.
+If your existing GitHub repository already has your real profile photo, keep that file. The included placeholder should not overwrite your real photo when you merge files manually.
 
-## Important
-BrightPath Creative Studio is a simulated portfolio client. Do not present it as paid client work.
+## Google Sheets / Docs / Drive links
+The OPEN FILE buttons currently point to local sample files. Once you create live Google Workspace samples, replace those `href` values in `index.html` with your Google share links.
+
+## GitHub
+Upload the contents of this folder to the root of `johnpaulpiadoche-art.github.io`. Do not upload the ZIP expecting GitHub to extract it.
+
+BrightPath Creative Studio is a simulated portfolio client; do not present it as paid client work.

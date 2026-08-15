@@ -376,5 +376,4 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--muted)
   .footer { flex-direction: column; align-items: flex-start; }
 }
 
-/* BRIGHTPATH SLIDER FIX */
-.va-viewport{overflow:hidden;position:relative;width:100%;touch-action:pan-y;cursor:grab}.va-track{display:flex;width:100%;transition:transform .4s ease;will-change:transform}.va-slide{flex:0 0 100%;min-width:100%;box-sizing:border-box}.va-slide-image img{pointer-events:none}.slide-arrow{z-index:30;display:flex;align-items:center;justify-content:center;touch-action:manipulation}.sample-btn,.file-btn{position:relative;z-index:31}
+.va-portfolio .section-heading h2{display:inline-block;color:var(--gold-light);border:1px solid var(--gold);background:linear-gradient(135deg,rgba(212,175,55,.13),rgba(0,0,0,.18));padding:14px 20px}.va-portfolio .section-heading h2 em{color:var(--gold-light);font-style:normal}.va-workflow{width:min(920px,100%);box-sizing:border-box;margin:22px auto 30px;padding:14px 18px;border:1px solid var(--gold);background:rgba(15,13,9,.85)}.va-workflow span{border:1px solid rgba(212,175,55,.55);background:rgba(212,175,55,.05)}.va-portfolio .slide-controls{width:min(920px,100%);box-sizing:border-box;margin:12px auto 0;padding:9px 12px;border:1px solid var(--line);background:#0d0d0d}.va-portfolio .slide-tip{display:none}

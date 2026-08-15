@@ -1,36 +1,40 @@
-# John Paul Piadoche — Merged Portfolio
+# John Paul Piadoche — BrightPath VA Portfolio
 
-This version is based on the previous portfolio and keeps the original introduction/about, profile-photo path, services, toolkit, career experience, creative section, contact section, and black-and-gold theme.
+This package uses the previous black-and-gold portfolio as its base, preserving the introduction, profile-photo path, career experience, services, toolkit, creative section, and contact section.
 
-## New features
-- Administrative VA Portfolio section
-- 10 VA project cards
-- VIEW SAMPLE buttons with image-preview modal
-- OPEN FILE buttons
-- Google Workspace workflow display
-- Dedicated VA image folder
-- Dedicated creative image folder
-- Responsive layout
+## BrightPath Creative Studio
+**SIMULATED CLIENT PROJECT — BRIGHTPATH CREATIVE STUDIO**
 
-## Replace images
-VA samples:
-`assets/images/va/`
+All client names, records, and figures are fictional.
 
-Creative samples:
-`assets/images/creative/`
+## VA Portfolio slider
+The VA samples are presented in one-screen, phone-like carousel format:
+- swipe left/right on mobile
+- drag left/right on desktop
+- previous/next arrows
+- navigation dots
+- sample counter
+- VIEW SAMPLE opens a larger preview
+- OPEN FILE opens a separate sample document
 
-Keep the existing filenames and your images will appear automatically.
+The files themselves are not editable through the portfolio website. For real Google Workspace versions, publish/share them as Viewer so clients cannot edit them.
 
-## Profile picture
-The original portfolio references:
-`images/profile.jpg`
+## Samples
+1. Client Database — Google Sheets
+2. Task Management Dashboard — Google Sheets
+3. Expense & Invoice Tracker — Google Sheets
+4. Google Drive Organization Guide — Google Docs
+5. Client Onboarding Form Specification — Google Forms + Sheets workflow
+6. Client Meeting Notes — Google Docs
+7. SOP — New Client Onboarding — Google Docs
+8. Weekly Administrative Report — Google Docs
+9. Gmail Organization & Templates — Google Docs
+10. Google Calendar Sample Schedule — Google Docs
 
-If your existing GitHub repository already has your real profile photo, keep that file. The included placeholder should not overwrite your real photo when you merge files manually.
+## Replace screenshots
+Replace the placeholder JPGs in `assets/images/va/` with screenshots of your own samples while keeping the same filenames.
 
-## Google Sheets / Docs / Drive links
-The OPEN FILE buttons currently point to local sample files. Once you create live Google Workspace samples, replace those `href` values in `index.html` with your Google share links.
+## GitHub Pages
+Upload the contents of this folder to the root of `johnpaulpiadoche-art.github.io`. Keep `index.html` in the repository root.
 
-## GitHub
-Upload the contents of this folder to the root of `johnpaulpiadoche-art.github.io`. Do not upload the ZIP expecting GitHub to extract it.
-
-BrightPath Creative Studio is a simulated portfolio client; do not present it as paid client work.
+The profile image path remains `images/profile.jpg`. Keep your actual profile image from your existing repository when merging if it is already there.

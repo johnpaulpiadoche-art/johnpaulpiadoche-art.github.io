@@ -186,37 +186,16 @@
 
     <!-- EXPERIENCE -->
     <section class="section dark-panel" id="experience">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">04 — EXPERIENCE</p>
-          <h2>Experience that built my <em>attention to detail.</em></h2>
-        </div>
-
-        <div class="timeline">
-          <article>
-            <div class="date">ASSET MANAGEMENT · LEGAL DOCUMENTATION</div>
-            <div>
-              <h3>Vallacar Transit, Inc.</h3>
-              <p>
-                Experience supporting property and legal documentation, records, correspondence,
-                coordination, and administrative processes.
-              </p>
-            </div>
-          </article>
-
-          <article>
-            <div class="date">SALES · COLLECTIONS · MANUFACTURING</div>
-            <div>
-              <h3>Rivson Goldplast Manufacturing Corporation</h3>
-              <p>
-                Experience involving customer-facing work, sales support, collections,
-                and coordination in a manufacturing environment.
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-    <article class="experience-item freelance-experience"><div class="experience-year">2010 — PRESENT</div><div class="experience-content"><h3>Freelance Costume &amp; Production Designer</h3><p class="experience-company">Independent Creative Practice</p><p>Providing freelance costume and production design services for creative projects, performances, festivals, events, productions, and visual presentations.</p><ul><li>Develop costume concepts from initial ideas, references, sketches, color direction, materials, and final visual execution.</li><li>Design and develop production elements, props, visual details, and supporting stage or presentation components.</li><li>Translate creative briefs and themes into practical designs while considering materials, construction, movement, visual impact, and production requirements.</li><li>Combine traditional artistic methods with digital design, image editing, visualization, and 3D modeling.</li><li>Transitioned from traditional and mixed-media design into increasingly digital workflows while retaining practical knowledge of physical materials, fabrication, painting, and costume construction.</li><li>Collaborate with clients, performers, organizers, and production teams to refine concepts and deliver cohesive visual results.</li></ul></div></article></section>
+<div class="container">
+<div class="section-heading">
+<p class="eyebrow">04 — EXPERIENCE</p>
+<h2>Experience that built my <em>attention to detail.</em></h2>
+</div>
+<div class="timeline">
+<article><div class="date">ASSET MANAGEMENT · LEGAL DOCUMENTATION</div><div><h3>Vallacar Transit, Inc.</h3><p>Supported property and legal documentation, records management, correspondence, coordination, document preparation, and administrative processes. Handled records carefully, maintained organized files, and assisted with documentation requiring accuracy, discretion, and attention to detail.</p></div></article>
+<article><div class="date">SALES · COLLECTIONS · MANUFACTURING</div><div><h3>Rivson Goldplast Manufacturing Corporation</h3><p>Handled customer-facing work, sales support, collections, follow-ups, account coordination, and administrative tasks within a manufacturing environment. Developed communication, organization, record-keeping, and follow-through skills while working with customers and internal teams.</p></div></article>
+<article><div class="date">2010 — PRESENT · FREELANCE CREATIVE PRACTICE</div><div><h3>Freelance Costume &amp; Production Designer</h3><p>Providing freelance costume and production design services for creative projects, performances, festivals, events, productions, and visual presentations. Develop concepts from sketches and references through material selection, fabrication considerations, visual refinement, and final execution.</p><p>My creative practice has evolved from traditional and mixed-media techniques into digital workflows, combining hands-on artistic experience with digital design, image editing, visualization, and 3D modeling. I translate creative briefs into practical, production-ready visual concepts while considering materials, construction, movement, visual impact, and project requirements.</p></div></article>
+</div></div></section>
 
     <!-- CREATIVE -->
     <section class="section creative" id="creative">
@@ -265,7 +244,10 @@
 <h2>SIMULATED CLIENT PROJECT — <em>BRIGHTPATH CREATIVE STUDIO</em></h2>
 <p>Administrative Virtual Assistant workflow samples demonstrating Google Workspace, documentation, task tracking, file organization, reporting, email, and calendar management.</p>
 </div>
-<div class="va-note"><strong>SIMULATED CLIENT PROJECT — BRIGHTPATH CREATIVE STUDIO</strong><span>All client names, records, and figures are fictional.</span></div>
+<div class="va-note">
+<strong>SIMULATED CLIENT PROJECT — BRIGHTPATH CREATIVE STUDIO</strong>
+<span>All client names, records, and figures are fictional.</span>
+</div>
 <div class="va-workflow"><span>CLIENT</span><b>→</b><span>FORMS</span><b>→</b><span>SHEETS</span><b>→</b><span>DRIVE</span><b>→</b><span>CALENDAR + GMAIL</span><b>→</b><span>REPORTING</span></div>
 <div class="va-slider"><button class="slide-arrow left" id="vaPrev" aria-label="Previous sample">‹</button>
 <div class="va-viewport" id="vaViewport"><div class="va-track" id="vaTrack"><article class="va-slide" data-index="0">
@@ -344,6 +326,15 @@
 
   <script src="script.js"></script>
 
-<script>document.addEventListener("DOMContentLoaded",function(){const m=document.getElementById("menuBtn"),n=document.getElementById("navMenu");if(m&&n){m.onclick=()=>{const o=n.classList.toggle("open");m.setAttribute("aria-expanded",o)};n.querySelectorAll("a").forEach(a=>a.onclick=()=>n.classList.remove("open"))}const y=document.getElementById("year");if(y)y.textContent=new Date().getFullYear();const v=document.getElementById("vaViewport"),t=document.getElementById("vaTrack"),ss=[...document.querySelectorAll(".va-slide")],p=document.getElementById("vaPrev"),nx=document.getElementById("vaNext"),dw=document.getElementById("vaDots"),c=document.getElementById("vaCounter");if(!v||!t||!ss.length)return;let i=0,x=0,y0=0,down=false;ss.forEach((_,k)=>{let d=document.createElement("button");d.type="button";d.className="dot"+(!k?" active":"");d.setAttribute("aria-label","Go to sample "+(k+1));d.onclick=()=>go(k);dw.appendChild(d)});function go(k){i=(k+ss.length)%ss.length;t.style.transform="translate3d("+(-i*100)+"%,0,0)";c.textContent=String(i+1).padStart(2,"0")+" / "+ss.length;dw.querySelectorAll(".dot").forEach((d,k)=>d.classList.toggle("active",k===i))}p?.addEventListener("click",e=>{e.preventDefault();go(i-1)});nx?.addEventListener("click",e=>{e.preventDefault();go(i+1)});v.addEventListener("pointerdown",e=>{if(e.pointerType==="mouse"&&e.button!==0)return;down=true;x=e.clientX;y0=e.clientY;v.setPointerCapture?.(e.pointerId)});v.addEventListener("pointerup",e=>{if(!down)return;down=false;let dx=e.clientX-x,dy=e.clientY-y0;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy))go(i+(dx<0?1:-1))});v.addEventListener("pointercancel",()=>down=false);document.addEventListener("keydown",e=>{if(e.key==="ArrowRight")go(i+1);if(e.key==="ArrowLeft")go(i-1)});go(0)});</script>
+<div class="sample-modal" id="sampleModal" aria-hidden="true"><div class="sample-backdrop" data-close-modal></div><div class="sample-dialog"><button class="modal-close" type="button" data-close-modal aria-label="Close">×</button><img id="samplePreview" src="" alt=""><h3 id="sampleTitle"></h3></div></div>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+const m=document.getElementById("menuBtn"),n=document.getElementById("navMenu");if(m&&n){m.onclick=()=>{const o=n.classList.toggle("open");m.setAttribute("aria-expanded",o?"true":"false")};n.querySelectorAll("a").forEach(a=>a.onclick=()=>n.classList.remove("open"))}
+const y=document.getElementById("year");if(y)y.textContent=new Date().getFullYear();
+const v=document.getElementById("vaViewport"),t=document.getElementById("vaTrack"),slides=[...document.querySelectorAll(".va-slide")],prev=document.getElementById("vaPrev"),next=document.getElementById("vaNext"),dots=document.getElementById("vaDots"),counter=document.getElementById("vaCounter");
+if(v&&t&&slides.length){let i=0,x=0,y0=0,down=false;slides.forEach((_,k)=>{const d=document.createElement("button");d.type="button";d.className="dot"+(k===0?" active":"");d.setAttribute("aria-label","Go to sample "+(k+1));d.onclick=()=>go(k);dots.appendChild(d)});function go(k){i=(k+slides.length)%slides.length;t.style.transform=`translate3d(${-i*100}%,0,0)`;counter.textContent=String(i+1).padStart(2,"0")+" / "+slides.length;dots.querySelectorAll(".dot").forEach((d,k)=>d.classList.toggle("active",k===i))}prev.onclick=()=>go(i-1);next.onclick=()=>go(i+1);v.addEventListener("pointerdown",e=>{if(e.pointerType==="mouse"&&e.button!==0)return;down=true;x=e.clientX;y0=e.clientY;v.setPointerCapture?.(e.pointerId)});v.addEventListener("pointerup",e=>{if(!down)return;down=false;const dx=e.clientX-x,dy=e.clientY-y0;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy))go(i+(dx<0?1:-1))});v.addEventListener("pointercancel",()=>down=false);document.addEventListener("keydown",e=>{if(e.key==="ArrowRight")go(i+1);if(e.key==="ArrowLeft")go(i-1)});go(0)}
+const modal=document.getElementById("sampleModal"),preview=document.getElementById("samplePreview"),title=document.getElementById("sampleTitle");document.querySelectorAll(".sample-btn").forEach(btn=>btn.onclick=e=>{e.stopPropagation();preview.src=btn.dataset.image;preview.alt=btn.dataset.title;title.textContent=btn.dataset.title;modal.classList.add("show");modal.setAttribute("aria-hidden","false")});document.querySelectorAll("[data-close-modal]").forEach(el=>el.onclick=()=>{modal.classList.remove("show");modal.setAttribute("aria-hidden","true")});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal){modal.classList.remove("show");modal.setAttribute("aria-hidden","true")}});
+});
+</script>
 </body>
 </html>

@@ -262,7 +262,7 @@
         </div>
 
         <div class="creative-gallery-wrap">
-          <div class="gallery-heading"><h3>Selected Creative Work</h3><span>10 works · tap an image to view uncropped</span></div>
+          <div class="gallery-heading"><h3>Selected Creative Work</h3><span>11 works · tap an image to view full image</span></div>
           <div class="creative-gallery" id="creativeGallery">
             <button class="creative-thumb" data-gallery-image="assets/images/creative/costume-01.jpg" data-gallery-title="Costume & Festival Production"><img src="assets/images/creative/costume-01.jpg" alt="Costume and festival production"></button>
             <button class="creative-thumb" data-gallery-image="assets/images/creative/prop-01.jpg" data-gallery-title="Prop Development"><img src="assets/images/creative/prop-01.jpg" alt="Prop development"></button>
@@ -270,6 +270,7 @@
             <button class="creative-thumb" data-gallery-image="assets/images/creative/costume-03.jpg" data-gallery-title="Headpiece & Costume Design"><img src="assets/images/creative/costume-03.jpg" alt="Headpiece and costume design"></button>
             <button class="creative-thumb" data-gallery-image="assets/images/creative/production-01.png" data-gallery-title="Production Design Layout"><img src="assets/images/creative/production-01.png" alt="Production design layout"></button>
             <button class="creative-thumb" data-gallery-image="assets/images/creative/costume-04.jpg" data-gallery-title="Costume Design Concept"><img src="assets/images/creative/costume-04.jpg" alt="Costume design concept"></button>
+            <button class="creative-thumb" data-gallery-image="assets/images/creative/production-02.jpg" data-gallery-title="Festival Production Documentation"><img src="assets/images/creative/production-02.jpg" alt="Festival production documentation"></button>
             <button class="creative-thumb" data-gallery-image="assets/images/creative/3d-01.jpg" data-gallery-title="3D Model Photography"><img src="assets/images/creative/3d-01.jpg" alt="3D model photography"></button>
             <button class="creative-thumb" data-gallery-image="assets/images/creative/3d-02.jpg" data-gallery-title="3D Model Collection"><img src="assets/images/creative/3d-02.jpg" alt="3D model collection"></button>
             <button class="creative-thumb" data-gallery-image="assets/images/creative/3d-03.jpg" data-gallery-title="Detailed 3D Model"><img src="assets/images/creative/3d-03.jpg" alt="Detailed 3D model"></button>
@@ -351,7 +352,7 @@
 <div class="va-actions"><button class="sample-btn" data-image="assets/images/va/calendar.jpg" data-title="Calendar Management">VIEW SAMPLE</button>
 <a class="file-btn" href="assets/docs/10_Google_Calendar_Sample_Schedule.docx" target="_blank" rel="noopener">OPEN FILE ↗</a></div></div></article></div></div>
 <button class="slide-arrow right" id="vaNext" aria-label="Next sample">›</button></div>
-<div class="slide-controls"><span id="vaCounter">01 / 10</span><div class="dots" id="vaDots"></div></div>
+<div class="slide-controls"><span id="vaCounter">01 / 10</span><div class="dots" id="vaDots"></div></div><div class="slide-tip">Swipe left or right, or use the arrows to browse samples.</div>
 
 </div></section>
 <div class="sample-modal" id="sampleModal" aria-hidden="true">
@@ -409,37 +410,101 @@ slides.forEach((_,i)=>{const d=document.createElement('button');d.className='dot
 function go(i){if(!slides.length)return;current=(i+slides.length)%slides.length;track.style.transform=`translateX(-${current*100}%)`;counter.textContent=String(current+1).padStart(2,'0')+' / '+slides.length;document.querySelectorAll('.dot').forEach((d,n)=>d.classList.toggle('active',n===current))}
 document.getElementById('vaNext').onclick=()=>go(current+1); document.getElementById('vaPrev').onclick=()=>go(current-1);
 const viewport=document.getElementById('vaViewport');
-viewport.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});
+viewport.addEventListener('touchstart',e=>{startX=e.touches[0].clientX},{passive:true});
 viewport.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>45)go(current+(dx<0?1:-1))},{passive:true});
-viewport.addEventListener('mousedown',e=>{dragging=true;startX=e.clientX});
-window.addEventListener('mouseup',e=>{if(!dragging)return;dragging=false;const dx=e.clientX-startX;if(Math.abs(dx)>45)go(current+(dx<0?1:-1))});
+viewport.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'){dragging=true;startX=e.clientX;viewport.setPointerCapture?.(e.pointerId)}});
+viewport.addEventListener('pointerup',e=>{if(e.pointerType!=='mouse'||!dragging)return;dragging=false;const dx=e.clientX-startX;if(Math.abs(dx)>45)go(current+(dx<0?1:-1));viewport.releasePointerCapture?.(e.pointerId)});
+viewport.addEventListener('pointercancel',()=>{dragging=false});
 
 /* UNIVERSAL IMAGE VIEWER — VA, CREATIVE, AND GUNDAM */
 const modal=document.getElementById('sampleModal'), preview=document.getElementById('samplePreview'), title=document.getElementById('sampleTitle');
 const viewerPrev=document.getElementById('viewerPrev'), viewerNext=document.getElementById('viewerNext');
 let viewerItems=[], viewerIndex=0, viewerStartX=0;
+
 function buildViewerItems(source){
-  if(source.classList.contains('sample-btn')) viewerItems=[...document.querySelectorAll('.sample-btn')];
-  else if(source.closest('#creativeGallery')) viewerItems=[...document.querySelectorAll('#creativeGallery [data-gallery-image]')];
-  else viewerItems=[...document.querySelectorAll('.gundam-gallery [data-gallery-image]')];
+  if(source.classList.contains('sample-btn')) {
+    viewerItems=[...document.querySelectorAll('.sample-btn')];
+  } else if(source.closest('#creativeGallery')) {
+    viewerItems=[...document.querySelectorAll('#creativeGallery [data-gallery-image]')];
+  } else {
+    viewerItems=[...document.querySelectorAll('.gundam-gallery [data-gallery-image]')];
+  }
 }
+
 function openViewer(source){
-  buildViewerItems(source); viewerIndex=Math.max(0,viewerItems.indexOf(source)); renderViewer();
-  modal.classList.add('show'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+  buildViewerItems(source);
+  viewerIndex=Math.max(0,viewerItems.indexOf(source));
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  renderViewer();
 }
+
 function renderViewer(){
-  const item=viewerItems[viewerIndex]; const image=item.dataset.image||item.dataset.galleryImage; const itemTitle=item.dataset.title||item.dataset.galleryTitle||'Portfolio Image';
-  preview.src=image; preview.alt=itemTitle; title.textContent=itemTitle;
+  const item=viewerItems[viewerIndex];
+  if(!item) return;
+  const image=item.dataset.image||item.dataset.galleryImage;
+  const itemTitle=item.dataset.title||item.dataset.galleryTitle||'Portfolio Image';
+  title.textContent=itemTitle;
+  preview.classList.remove('loaded');
+  preview.alt=itemTitle;
+  preview.src='';
+  // Preload first so the viewer never shows a blank/broken frame.
+  const loader=new Image();
+  loader.onload=()=>{
+    preview.src=image;
+    preview.classList.add('loaded');
+  };
+  loader.onerror=()=>{
+    preview.src=image;
+    preview.classList.add('loaded');
+  };
+  loader.src=image;
 }
-function moveViewer(step){if(!viewerItems.length)return;viewerIndex=(viewerIndex+step+viewerItems.length)%viewerItems.length;renderViewer()}
-function closeViewer(){modal.classList.remove('show');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
-document.querySelectorAll('.sample-btn,[data-gallery-image]').forEach(el=>el.addEventListener('click',()=>openViewer(el)));
-document.querySelectorAll('.va-slide-image img').forEach((img)=>img.addEventListener('click',()=>{const btn=img.closest('.va-slide').querySelector('.sample-btn');if(btn)openViewer(btn)}));
-viewerPrev.onclick=()=>moveViewer(-1); viewerNext.onclick=()=>moveViewer(1);
+
+function moveViewer(step){
+  if(!viewerItems.length)return;
+  viewerIndex=(viewerIndex+step+viewerItems.length)%viewerItems.length;
+  renderViewer();
+}
+
+function closeViewer(){
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  setTimeout(()=>{if(!modal.classList.contains('show')) preview.src='';},180);
+}
+
+document.querySelectorAll('.sample-btn,[data-gallery-image]').forEach(el=>el.addEventListener('click',(e)=>{
+  e.preventDefault();
+  e.stopPropagation();
+  openViewer(el);
+}));
+
+document.querySelectorAll('.va-slide-image img').forEach(img=>img.addEventListener('click',(e)=>{
+  e.preventDefault();
+  e.stopPropagation();
+  const btn=img.closest('.va-slide').querySelector('.sample-btn');
+  if(btn)openViewer(btn);
+}));
+
+viewerPrev.onclick=()=>moveViewer(-1);
+viewerNext.onclick=()=>moveViewer(1);
 document.querySelectorAll('[data-close-modal]').forEach(el=>el.addEventListener('click',closeViewer));
-modal.addEventListener('touchstart',e=>viewerStartX=e.touches[0].clientX,{passive:true});
-modal.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-viewerStartX;if(Math.abs(dx)>45)moveViewer(dx<0?1:-1)},{passive:true});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeViewer();if(modal.classList.contains('show')){if(e.key==='ArrowRight')moveViewer(1);if(e.key==='ArrowLeft')moveViewer(-1)}});
+
+modal.addEventListener('touchstart',e=>{viewerStartX=e.touches[0].clientX},{passive:true});
+modal.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-viewerStartX;
+  if(Math.abs(dx)>45)moveViewer(dx<0?1:-1);
+},{passive:true});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape' && modal.classList.contains('show')) closeViewer();
+  if(modal.classList.contains('show')){
+    if(e.key==='ArrowRight')moveViewer(1);
+    if(e.key==='ArrowLeft')moveViewer(-1);
+  }
+});
 </script>
 </body>
 </html>

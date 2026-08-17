@@ -331,10 +331,30 @@
 document.addEventListener("DOMContentLoaded",function(){
 const m=document.getElementById("menuBtn"),n=document.getElementById("navMenu");if(m&&n){m.onclick=()=>{const o=n.classList.toggle("open");m.setAttribute("aria-expanded",o?"true":"false")};n.querySelectorAll("a").forEach(a=>a.onclick=()=>n.classList.remove("open"))}
 const y=document.getElementById("year");if(y)y.textContent=new Date().getFullYear();
-const v=document.getElementById("vaViewport"),t=document.getElementById("vaTrack"),slides=[...document.querySelectorAll(".va-slide")],prev=document.getElementById("vaPrev"),next=document.getElementById("vaNext"),dots=document.getElementById("vaDots"),counter=document.getElementById("vaCounter");
-if(v&&t&&slides.length){let i=0,x=0,y0=0,down=false;slides.forEach((_,k)=>{const d=document.createElement("button");d.type="button";d.className="dot"+(k===0?" active":"");d.setAttribute("aria-label","Go to sample "+(k+1));d.onclick=()=>go(k);dots.appendChild(d)});function go(k){i=(k+slides.length)%slides.length;t.style.transform=`translate3d(${-i*100}%,0,0)`;counter.textContent=String(i+1).padStart(2,"0")+" / "+slides.length;dots.querySelectorAll(".dot").forEach((d,k)=>d.classList.toggle("active",k===i))}prev.onclick=()=>go(i-1);next.onclick=()=>go(i+1);v.addEventListener("pointerdown",e=>{if(e.pointerType==="mouse"&&e.button!==0)return;down=true;x=e.clientX;y0=e.clientY;v.setPointerCapture?.(e.pointerId)});v.addEventListener("pointerup",e=>{if(!down)return;down=false;const dx=e.clientX-x,dy=e.clientY-y0;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy))go(i+(dx<0?1:-1))});v.addEventListener("pointercancel",()=>down=false);document.addEventListener("keydown",e=>{if(e.key==="ArrowRight")go(i+1);if(e.key==="ArrowLeft")go(i-1)});go(0)}
-const modal=document.getElementById("sampleModal"),preview=document.getElementById("samplePreview"),title=document.getElementById("sampleTitle");document.querySelectorAll(".sample-btn").forEach(btn=>btn.onclick=e=>{e.stopPropagation();preview.src=btn.dataset.image;preview.alt=btn.dataset.title;title.textContent=btn.dataset.title;modal.classList.add("show");modal.setAttribute("aria-hidden","false")});document.querySelectorAll("[data-close-modal]").forEach(el=>el.onclick=()=>{modal.classList.remove("show");modal.setAttribute("aria-hidden","true")});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal){modal.classList.remove("show");modal.setAttribute("aria-hidden","true")}});
+const v=document.getElementById("vaViewport"),t=document.getElementById("vaTrack"),ss=[...document.querySelectorAll(".va-slide")],p=document.getElementById("vaPrev"),nx=document.getElementById("vaNext"),dw=document.getElementById("vaDots"),c=document.getElementById("vaCounter");if(!v||!t||!ss.length)return;
+let i=0,x=0,y0=0,down=false,moved=false;
+ss.forEach((_,k)=>{let d=document.createElement("button");d.type="button";d.className="dot"+(!k?" active":"");d.setAttribute("aria-label","Go to sample "+(k+1));d.onclick=()=>go(k);dw.appendChild(d)});
+function go(k){i=(k+ss.length)%ss.length;t.style.transform="translate3d("+(-i*100)+"%,0,0)";c.textContent=String(i+1).padStart(2,"0")+" / "+ss.length;dw.querySelectorAll(".dot").forEach((d,k)=>d.classList.toggle("active",k===i))}
+p?.addEventListener("click",e=>{e.preventDefault();go(i-1)});nx?.addEventListener("click",e=>{e.preventDefault();go(i+1)});
+v.addEventListener("pointerdown",e=>{if(e.pointerType==="mouse"&&e.button!==0)return;down=true;moved=false;x=e.clientX;y0=e.clientY;v.setPointerCapture?.(e.pointerId)});
+v.addEventListener("pointermove",e=>{if(!down)return;let dx=e.clientX-x,dy=e.clientY-y0;if(Math.abs(dx)>8&&Math.abs(dx)>Math.abs(dy))moved=true});
+v.addEventListener("pointerup",e=>{if(!down)return;down=false;let dx=e.clientX-x,dy=e.clientY-y0;if(moved&&Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy))go(i+(dx<0?1:-1))});
+v.addEventListener("pointercancel",()=>down=false);
+
+const lb=document.getElementById("vaLightbox"),im=document.getElementById("vaLightboxImage"),cap=document.getElementById("vaLightboxCaption"),cnt=document.getElementById("vaLightboxCounter"),close=document.getElementById("vaLightboxClose"),lp=document.getElementById("vaLightboxPrev"),ln=document.getElementById("vaLightboxNext"),stage=document.getElementById("vaLightboxStage");
+function show(k){i=(k+ss.length)%ss.length;const img=ss[i].querySelector("img");if(!img)return;im.src=img.currentSrc||img.src;im.alt=img.alt||("Portfolio sample "+(i+1));cap.textContent=ss[i].querySelector("h3")?.textContent.trim()||"";cnt.textContent=String(i+1).padStart(2,"0")+" / "+ss.length;go(i)}
+function openLB(k){show(k);lb.classList.add("show");lb.setAttribute("aria-hidden","false");document.body.classList.add("lightbox-open")}
+function closeLB(){lb.classList.remove("show");lb.setAttribute("aria-hidden","true");document.body.classList.remove("lightbox-open")}
+ss.forEach((slide,k)=>{const img=slide.querySelector("img");if(img)img.onclick=e=>{e.preventDefault();e.stopPropagation();openLB(k)}});
+close?.addEventListener("click",closeLB);lp?.addEventListener("click",e=>{e.stopPropagation();show(i-1)});ln?.addEventListener("click",e=>{e.stopPropagation();show(i+1)});lb?.addEventListener("click",e=>{if(e.target===lb)closeLB()});
+let ld=false,lx=0,ly=0;stage?.addEventListener("pointerdown",e=>{ld=true;lx=e.clientX;ly=e.clientY;stage.setPointerCapture?.(e.pointerId)});stage?.addEventListener("pointerup",e=>{if(!ld)return;ld=false;let dx=e.clientX-lx,dy=e.clientY-ly;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy))show(i+(dx<0?1:-1))});
+document.addEventListener("keydown",e=>{if(lb.classList.contains("show")){if(e.key==="Escape")closeLB();if(e.key==="ArrowLeft")show(i-1);if(e.key==="ArrowRight")show(i+1)}else{if(e.key==="ArrowLeft")go(i-1);if(e.key==="ArrowRight")go(i+1)}});go(0);
 });
 </script>
-</body>
+<div class="va-lightbox" id="vaLightbox" aria-hidden="true">
+<button class="va-lightbox-close" id="vaLightboxClose" type="button">×</button>
+<button class="va-lightbox-arrow va-lightbox-prev" id="vaLightboxPrev" type="button">‹</button>
+<div class="va-lightbox-stage" id="vaLightboxStage"><img id="vaLightboxImage" src="" alt=""><div class="va-lightbox-caption" id="vaLightboxCaption"></div></div>
+<button class="va-lightbox-arrow va-lightbox-next" id="vaLightboxNext" type="button">›</button>
+<div class="va-lightbox-counter" id="vaLightboxCounter">01 / 10</div></div></body>
 </html>

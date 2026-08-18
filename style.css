@@ -423,3 +423,12 @@ footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--muted)
   .sample-dialog.viewer #samplePreview{max-width:92vw;max-height:82vh;}
   .sample-dialog.viewer .modal-close{right:12px;top:10px;width:42px;height:42px;font-size:30px;}
 }
+
+/* ROBUST VA SLIDER FIX */
+.va-viewport{position:relative;width:100%;overflow:hidden;touch-action:pan-y;-webkit-overflow-scrolling:touch}
+.va-track{width:100%;display:flex;flex-wrap:nowrap;align-items:stretch}
+.va-slide{flex:0 0 100%;width:100%;min-width:100%;box-sizing:border-box}
+.va-slide-image{min-width:0;overflow:hidden}
+.va-slide-image img{display:block;width:100%;height:100%;object-fit:contain!important}
+@media(max-width:800px){.va-slide{display:grid;grid-template-columns:1fr}.va-slide-image{height:300px;min-height:300px}.va-slide-info{min-height:260px}}
+@media(max-width:600px){.va-slide-image{height:240px;min-height:240px}}
